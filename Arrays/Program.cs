@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Linq;
 
-
-namespace TestApp
+namespace Arrays
 {
     class Program
     {
@@ -34,4 +32,3 @@ namespace TestApp
         }
     }
 }
-
