@@ -8,26 +8,27 @@ namespace TestApp
     {
         static void Main(string[] args)
         {
-            int[,] myArray = new int[2, 3];
+            int[][] myArray = new int[3][];
 
-            int height = myArray.GetLength(0);
-            int width = myArray.GetLength(1);
+            myArray[0] = new int[5];
+            myArray[1] = new int[7];
+            myArray[2] = new int[2];
 
-            for (int i = 0; i < height; i++)
+            Random random = new Random();
+
+            for (int i = 0; i < myArray.Length; i++)
             {
-                for (int j = 0; j < width; j++)
+                for (int j = 0; j< myArray[i].Length; j++)
                 {
-                    Console.WriteLine($"Y: {i} X: {j}");
-                    myArray[i, j] = int.Parse(Console.ReadLine());
+                    myArray[i][j] = random.Next(100);
                 }
-                Console.WriteLine();
             }
 
-            for (int y = 0; y < height; y++)
+            for (int i = 0; i < myArray.Length; i++)
             {
-                for (int x = 0; x < width; x++)
+                for (int j = 0; j < myArray[i].Length; j++)
                 {
-                    Console.Write(myArray[y, x] + "\t");
+                    Console.Write(myArray[i][j] + "\t"); 
                 }
                 Console.WriteLine();
             }
