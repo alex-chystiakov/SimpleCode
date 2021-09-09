@@ -8,27 +8,32 @@ namespace TestApp
     {
         static void Main(string[] args)
         {
-            int[][] myArray = new int[3][];
-
-            myArray[0] = new int[5];
-            myArray[1] = new int[7];
-            myArray[2] = new int[2];
-
             Random random = new Random();
 
-            for (int i = 0; i < myArray.Length; i++)
+            int[,,] myArray = new int[4, 3, 5];
+
+            for (int i = 0; i < myArray.GetLength(0); i++)
             {
-                for (int j = 0; j< myArray[i].Length; j++)
+                for (int j = 0; j < myArray.GetLength(1); j++)
                 {
-                    myArray[i][j] = random.Next(100);
+                    for (int k = 0; k < myArray.GetLength(2); k++)
+                    {
+                        myArray[i, j, k] = random.Next(100);
+                    }
                 }
             }
 
-            for (int i = 0; i < myArray.Length; i++)
+            for (int i = 0; i < myArray.GetLength(0); i++)
             {
-                for (int j = 0; j < myArray[i].Length; j++)
+                Console.WriteLine($"Page number: {i + 1}");
+
+                for (int j = 0; j < myArray.GetLength(1); j++)
                 {
-                    Console.Write(myArray[i][j] + "\t"); 
+                    for (int k = 0; k < myArray.GetLength(2); k++)
+                    {
+                        Console.WriteLine(myArray[i, j, k] + " ");
+                    }
+                    Console.WriteLine();
                 }
                 Console.WriteLine();
             }
