@@ -6,37 +6,38 @@ namespace TestApp
 {
     class Program
     {
-        static void Main(string[] args)
+        static int IndexOf(int[] array, int value)
         {
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == value)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        static int[] GetRandomArray(uint length, int minValue, int maxValue) 
+        {
+            int[] myArray = new int[length];
+
             Random random = new Random();
 
-            int[,,] myArray = new int[4, 3, 5];
-
-            for (int i = 0; i < myArray.GetLength(0); i++)
+            for (int i = 0; i < myArray.Length; i++)
             {
-                for (int j = 0; j < myArray.GetLength(1); j++)
-                {
-                    for (int k = 0; k < myArray.GetLength(2); k++)
-                    {
-                        myArray[i, j, k] = random.Next(100);
-                    }
-                }
+                myArray[i] = random.Next(minValue, maxValue);
             }
 
-            for (int i = 0; i < myArray.GetLength(0); i++)
-            {
-                Console.WriteLine($"Page number: {i + 1}");
+            return myArray;
+        }
 
-                for (int j = 0; j < myArray.GetLength(1); j++)
-                {
-                    for (int k = 0; k < myArray.GetLength(2); k++)
-                    {
-                        Console.WriteLine(myArray[i, j, k] + " ");
-                    }
-                    Console.WriteLine();
-                }
-                Console.WriteLine();
-            }
+        static void Main(string[] args)
+        {
+            int[] myArray = GetRandomArray(10, -29, 10);
+
+            int result = IndexOf(myArray, 5);
+            Console.WriteLine(result);
         }
     }
 }
